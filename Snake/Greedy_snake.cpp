@@ -11,6 +11,7 @@ int main()
 	loadimage(&img, L"C:\\Users\\15971\\source\\repos\\Greedy Snake\\Snake\\bk.jpg", wide, height);
 	putimage(0, 0, &img);
 
+
 	while (1)
 	{
 
