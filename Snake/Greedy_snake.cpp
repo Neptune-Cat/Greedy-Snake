@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<graphics.h>
 
+using namespace std;
+
 int main()
 {
 	//初始化 图形窗口
