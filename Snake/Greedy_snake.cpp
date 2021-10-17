@@ -49,7 +49,7 @@ void GameDraw()
 	//ªÊ÷∆±≥æ∞
 	IMAGE img;
 	int wide = 800, height = 600;
-	loadimage(&img, L"C:\\Users\\15971\\source\\repos\\Greedy Snake\\Snake\\bk.jpg", wide, height);
+	loadimage(&img, L"C:\\Users\\15971\\source\\repos\\Greedy Snake\\Snake\\hwx.jpg", wide, height);
 	putimage(0, 0, &img);
 	//ªÊ÷∆…ﬂ
 	setfillcolor(RGB(126, 239, 123));
@@ -73,15 +73,31 @@ void snakeMove()
 	{
 	case UP:
 		snake.coor[0].y -= snake.speed;
+		if (snake.coor[0].y <= 0)
+		{
+			snake.coor[0].y = 600;
+		}
 		break;
 	case DOWN:
 		snake.coor[0].y += snake.speed;
+		if (snake.coor[0].y >= 600)
+		{
+			snake.coor[0].y = 0;
+		}
 		break;
 	case LEFT:
 		snake.coor[0].x -= snake.speed;
+		if (snake.coor[0].x <= 0)
+		{
+			snake.coor[0].x = 800;
+		}
 		break;
 	case RIGHT:
 		snake.coor[0].x += snake.speed;
+		if (snake.coor[0].x >= 800)
+		{
+			snake.coor[0].x = 0;
+		}
 		break;
 	}
 	
