@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<graphics.h>
-#include<Windows.h>
-#include<time.h>
+#include<mmsystem.h>  //多媒体设备接口
+#pragma comment(lib,"winmm.lib")  //加载静态库
 #include<conio.h>  //控制台输入输出头文件
 #include<stdlib.h>
+#include<time.h>
 
 #define SNAKE_NUM 400000  //蛇的最大节数
 
@@ -25,11 +26,23 @@ struct Snake
 	POINT coor[SNAKE_NUM];  //坐标
 }snake;
 
+//食物结构
+struct Food
+{
+	int x;
+	int y;
+	int r;  //食物大小
+	bool flag;  //食物是否被吃
+	DWORD color;  //食物颜色
+}food;
+
 //数据初始化
 void GameInit()
 {
 	//初始化图形窗口
 	initgraph(800, 600);
+	//设置随机数种子
+	srand(GetTickCount());
 	// 初始化蛇
 	snake.size = 3;
 	snake.speed = 10;
@@ -39,6 +52,12 @@ void GameInit()
 		snake.coor[i].x = 400 - 10 * i;
 		snake.coor[i].y = 300;
 	}
+	//初始化食物
+	food.x = rand() % 800;
+	food.y = rand() % 600;
+	food.color = RGB(rand() % 256, rand() % 256, rand() % 256);
+	food.r = 5;
+	food.flag = true;
 }
 
 //绘图
@@ -49,13 +68,18 @@ void GameDraw()
 	//绘制背景
 	IMAGE img;
 	int wide = 800, height = 600;
-	loadimage(&img, L"C:\\Users\\15971\\source\\repos\\Greedy Snake\\Snake\\hwx.jpg", wide, height);
+	loadimage(&img, "./hwx.jpg", wide, height);
 	putimage(0, 0, &img);
 	//绘制蛇
 	setfillcolor(RGB(126, 239, 123));
 	for (int i = 0; i < snake.size; i++)
 	{
 		solidcircle(snake.coor[i].x, snake.coor[i].y, 5);
+	}
+	//绘制食物
+	if (food.flag)
+	{
+		solidcircle(food.x, food.y, food.r);
 	}
 	EndBatchDraw();
 }
@@ -114,7 +138,6 @@ void keyControl()
 		{
 		case'w':
 		case'W':
-		case 72:
 			if (snake.dir != DOWN)
 			{
 				snake.dir = UP;
@@ -122,7 +145,6 @@ void keyControl()
 			break;
 		case's':
 		case'S':
-		case 80:
 			if (snake.dir != UP)
 			{
 				snake.dir = DOWN;
@@ -130,7 +152,6 @@ void keyControl()
 			break;
 		case'a':
 		case'A':
-		case 75:
 			if (snake.dir != RIGHT)
 			{
 				snake.dir = LEFT;
@@ -138,26 +159,61 @@ void keyControl()
 			break;
 		case'd':
 		case'D':
-		case 77:
 			if (snake.dir != LEFT)
 			{
 				snake.dir = RIGHT;
+			}
+			break;
+		//游戏暂停
+		case 'p':
+		case 'P':
+			while (1)
+			{
+				if (_getch() == 'p' && _getch() == 'P')
+					return;
 			}
 			break;
 		}
 	}
 }
 
+void EatFood()
+{
+	if (food.flag && snake.coor[0].x >= food.x - food.r && snake.coor[0].x <= food.x + food.r && 
+		snake.coor[0].y >= food.y - food.r && snake.coor[0].y <= food.y + food.r)
+	{
+		food.flag = false;
+		snake.size++;
+	}
+	//食物刷新
+	if (!food.flag)
+	{
+		food.x = rand() % 800;
+		food.y = rand() % 600;
+		food.color = RGB(rand() % 256, rand() % 256, rand() % 256);
+		food.r = 5;
+		food.flag = true;
+	}
+}
+
+void BGM()
+{
+	mciSendString("open ./", 0, 0, 0);
+	mciSendString("play ./", 0, 0, 0);
+}
+
 int main()
 {
 
 	GameInit();
+	BGM();
 	
 	while (1)
 	{
 		GameDraw();
 		snakeMove();
 		keyControl();
+		EatFood();
 		Sleep(80);
 	}
 	return 0;
