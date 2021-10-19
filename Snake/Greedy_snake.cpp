@@ -7,11 +7,10 @@ int main()
 {
 
 	GameInit();
-	BGM();
 	
 	while (1)
 	{
-		GameDraw();
+		GameDrawF();
 		snakeMove();
 		keyControl();
 		EatFoodScore();

@@ -121,12 +121,9 @@ void keyControl()
 	}
 }
 
-//蛇的死亡判定
+//蛇的死亡判定      返回值为真
 bool snakeDead()
 {
-
-
-
 	return true;
 }
 
@@ -141,7 +138,7 @@ struct Food
 	DWORD color;  //食物颜色
 }food;
 
-//吃到食物（果实、碎片）后蛇加长（得分）
+//吃到果实后蛇加长（得分），食物刷新
 void EatFoodScore()
 {
 	if (food.flag && snake.coor[0].x >= food.x - 2 - food.r && snake.coor[0].x <= food.x + 1 + food.r &&
@@ -150,7 +147,7 @@ void EatFoodScore()
 		food.flag = false;
 		snake.size++;
 	}
-	//食物刷新
+	//食物刷新（随机）
 	if (!food.flag)
 	{
 		food.x = rand() % 790;
@@ -196,15 +193,15 @@ void GameInit()
 		snake.coor[i].y = 300;
 	}
 	//初始化食物
-	food.x = rand() % 790;
-	food.y = rand() % 590;
+	food.x = rand() % 800;
+	food.y = rand() % 600;
 	food.color = RGB(rand() % 256, rand() % 256, rand() % 256);
 	food.r = 5;
 	food.flag = true;
 }
 
-//绘图(食物和蛇)
-void GameDraw()
+//绘制果实、蛇和游戏背景
+void GameDrawF()
 {
 	//双缓冲绘图
 	BeginBatchDraw();
@@ -225,7 +222,7 @@ void GameDraw()
 		setfillcolor(RGB(126, 239, 123));
 		solidcircle(snake.coor[i].x, snake.coor[i].y, 5);
 	}
-	//绘制食物
+	//绘制食物（随机）
 	if (food.flag)
 	{
 		setfillcolor(RGB(140, 80, 120));
@@ -234,10 +231,100 @@ void GameDraw()
 	EndBatchDraw();
 }
 
-
-//设置背景音乐
-void BGM()
+//绘制碎片
+void GameDrawP()
 {
-	mciSendString("open ./", 0, 0, 0);
-	mciSendString("play ./", 0, 0, 0);
+
+}
+
+//吃到碎片后得分，碎片刷新
+void EatP()
+{
+
+}
+
+//地刺（绘制、计步）
+void TrapS()
+{
+
+}
+
+//移动墙（绘制、移动、计步？）
+void TrapW()
+{
+
+}
+
+//获得星星数量判定（计步）
+void GetStar()
+{
+
+}
+
+
+
+//首页界面打印，所进入的子页面的判定。输入：定义的点的坐标；输出：无
+void gamebegin(int mouseX, int mouseY)
+{
+
+}
+
+//所进入子页面的判定。输入：借以进入子页面的点的坐标；输出：无
+void gameset(int, int)
+{
+
+}
+
+//改游戏声音大小。输入：接收键盘所打字母的变量  输出：无
+void gamesound(char)
+{
+
+}
+
+//设置初始背景音乐，更改游戏的背景音乐。输入：屏幕上点的坐标  输出：无
+void gamemusic(int, int)
+{
+
+}
+
+//改蛇的速度、进入自由或闯关模式游玩。输入：接收键盘所打字母的变量 点的坐标  输出：无
+void snakespeed(char, int, int)
+{
+
+}
+
+//进入蛇皮肤修改和游戏背景修改中心。输入：点坐标  输出：无
+void gamecover(int, int)
+{
+
+}
+
+//蛇皮肤修改。输入：点坐标  输出：无
+void snakecover(int, int)
+{
+
+}
+
+//游戏背景修改。输入；点坐标  输出：无
+void background(int, int)
+{
+
+}
+
+//游戏规则页面，打印游戏规则。输入：无；输出：无
+void gamerule()
+{
+
+}
+
+//退出游戏操作
+void gamebyebye()
+{
+
+}
+
+//游戏模式选择页面。输入：坐标；输出：无
+void gameplay(int, int)
+{
+
 }
