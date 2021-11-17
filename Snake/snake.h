@@ -3355,6 +3355,19 @@ int gamebreak(int x, int y, int w, int h)
 						Sleep(80);
 
 					}
+					food.Peice1 = true;
+					food.Peice2 = true;
+					food.Peice3 = true;
+					food.Peice4 = true;
+					food.Peice5 = true;
+					food.Peice6 = true;
+					food.Peice7 = true;
+					food.Peice8 = true;
+					food.Peice9 = true;
+					food.Peice10 = true;
+					food.Peice11 = true;
+					food.Peice12 = true;
+					E = 1;
 					setlinecolor(WHITE);
 					fillroundrect(x, y * 1, x + w, y * 1 + h, 10, 10);
 					strcpy(p, "game over");
@@ -3398,6 +3411,19 @@ int gamebreak(int x, int y, int w, int h)
 						Sleep(80);
 
 					}
+					food.Peice1 = true;
+					food.Peice2 = true;
+					food.Peice3 = true;
+					food.Peice4 = true;
+					food.Peice5 = true;
+					food.Peice6 = true;
+					food.Peice7 = true;
+					food.Peice8 = true;
+					food.Peice9 = true;
+					food.Peice10 = true;
+					food.Peice11 = true;
+					food.Peice12 = true;
+					E = 1;
 					setlinecolor(WHITE);
 					fillroundrect(x, y * 2, x + w, y * 2 + h, 10, 10);
 					strcpy(p, "game over");
@@ -3441,6 +3467,19 @@ int gamebreak(int x, int y, int w, int h)
 						Sleep(80);
 
 					}
+					food.Peice1 = true;
+					food.Peice2 = true;
+					food.Peice3 = true;
+					food.Peice4 = true;
+					food.Peice5 = true;
+					food.Peice6 = true;
+					food.Peice7 = true;
+					food.Peice8 = true;
+					food.Peice9 = true;
+					food.Peice10 = true;
+					food.Peice11 = true;
+					food.Peice12 = true;
+					E = 1;
 					setlinecolor(WHITE);
 					fillroundrect(x, y * 3, x + w, y * 3 + h, 10, 10);
 					strcpy(p, "game over");
@@ -3483,6 +3522,19 @@ int gamebreak(int x, int y, int w, int h)
 						Sleep(80);
 
 					}
+					food.Peice1 = true;
+					food.Peice2 = true;
+					food.Peice3 = true;
+					food.Peice4 = true;
+					food.Peice5 = true;
+					food.Peice6 = true;
+					food.Peice7 = true;
+					food.Peice8 = true;
+					food.Peice9 = true;
+					food.Peice10 = true;
+					food.Peice11 = true;
+					food.Peice12 = true;
+					E = 1;
 					setlinecolor(WHITE);
 					fillroundrect(x, y * 4, x + w, y * 4 + h, 10, 10);
 					strcpy(p, "game over");
@@ -3519,12 +3571,6 @@ int gamebreak(int x, int y, int w, int h)
 	}
 
 }
-
-//void text1()
-//{
-//
-//}
-
 
 
 

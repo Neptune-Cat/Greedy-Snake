@@ -1,40 +1,5 @@
 #include"snake.h"
 
-
-
-
-//int main()
-//{
-//	
-//	GameInitF2();
-//	while (1)
-//	{
-//		
-//		
-//		
-//		
-//		
-//
-//		while (1)
-//				{
-//					GameDrawF1();
-//					keyControl();
-//					snakeMove();
-//					Sleep(80);
-//				}
-//
-//
-//
-//	}
-//	while (1)
-//	{
-//		gamebegin(320, 120, 140, 60);
-//		
-//	}
-//
-//
-//	return 0;
-//}
 int main()
 {
 
